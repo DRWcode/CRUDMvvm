@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRUDMvvm.Views.AddProductoPage"
+             xmlns:viewModels="clr-namespace:CRUDMvvm.ViewModels"
+             x:DataType="viewModels:AddProductoPageViewModel"
+             Title="Agregar Producto">
+	<VerticalStackLayout Padding="30,10,30,10" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+		<Label Text="Nombre:" />
+		<Entry Text="{Binding Nombre}" Keyboard="Text" Placeholder="Ingrese el nombre del producto" />
+
+		<Label Text="Precio:" />
+		<Entry Text="{Binding Precio}" Keyboard="Numeric" Placeholder="Ingrese el precio del producto" />
+
+		<Label Text="Descripción:" />
+		<Entry Text="{Binding Descripcion}" Keyboard="Text" Placeholder="Ingrese la descripción del producto" />
+
+		<Label Text="Inventario:" />
+		<Entry Text="{Binding Inventario}" Keyboard="Numeric" Placeholder="Ingrese el inventario del producto" />
+
+		<Button Text="Guardar" x:Name="btnGuardarEditar" Command="{Binding AddUpdateCommand}" />
+	</VerticalStackLayout>
+</ContentPage>

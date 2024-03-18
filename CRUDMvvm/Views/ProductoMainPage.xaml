@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CRUDMvvm.Views.ProductoMainPage"
+             xmlns:viewModel="clr-namespace:CRUDMvvm.ViewModels"
+             x:DataType="viewModel:ProductoMainPageViewModel"
+             xmlns:models="clr-namespace:CRUDMvvm.Models"
+             Title="Lista de Productos">
+	<ScrollView>
+		<VerticalStackLayout Padding="10,0,10,0">
+			<Button Text="Agregar Producto" HorizontalOptions="Start" Command="{Binding GoToAddProductoPageCommand}" />
+
+			<Grid Margin="0,5,0,5" RowDefinitions="Auto" ColumnDefinitions="33*,33*,33*,33*">
+				<Label Text="Nombre" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="0" />
+				<Label Text="Precio" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="1" />
+				<Label Text="Descripción" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="2" />
+				<Label Text="Inventario" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="3" />
+			</Grid>
+			<CollectionView ItemsSource="{Binding ProductoCollection}" >
+				<CollectionView.ItemTemplate>
+					<DataTemplate x:DataType="models:Producto">
+						<Grid RowSpacing="0" RowDefinitions="10,Auto,10,0.5" ColumnDefinitions="33*,33*,33*,33*" VerticalOptions="FillAndExpand">
+							<Label Text="{Binding Nombre}" Grid.Row="1" Grid.Column="0" />
+							<Label Text="{Binding Precio}" Grid.Row="1" Grid.Column="1" />
+							<Label Text="{Binding Descripcion}" Grid.Row="1" Grid.Column="2" />
+							<Label Text="{Binding Inventario}" Grid.Row="1" Grid.Column="3" />
+							<Grid.GestureRecognizers>
+								<TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:ProductoMainPageViewModel}},Path=SelectProductoCommand}" CommandParameter="{Binding .}" />
+							</Grid.GestureRecognizers>
+						</Grid>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</VerticalStackLayout>
+	</ScrollView>
+</ContentPage>
