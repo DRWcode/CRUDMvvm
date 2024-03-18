@@ -1,4 +1,6 @@
-﻿namespace CRUDMvvm
+﻿using CRUDMvvm.Views;
+
+namespace CRUDMvvm
 {
     public partial class App : Application
     {
@@ -6,7 +8,8 @@
         {
             InitializeComponent();
 
-            MainPage = new AppShell();
+            MainPage = new NavigationPage(new ProductoMainPage());
         }
     }
 }
+ 
